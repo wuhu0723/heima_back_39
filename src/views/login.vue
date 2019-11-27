@@ -56,7 +56,10 @@ export default {
           let res = await login(this.loginForm)
           console.log(res)
           if (res.data.message === '登录成功') {
+            // 将token数据进行本地存储
+            localStorage.setItem('heima_back_39_token', res.data.data.token)
             // 跳转到后台管理首页
+            this.$router.push({ path: '/index' })
           } else {
             this.$message.error(res.data.message)
           }
