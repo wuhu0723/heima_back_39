@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 // 引入路由所映射的组件
 import Login from '@/views/login.vue'
 import Index from '@/views/index.vue'
+import Wel from '@/views/welcomePage.vue'
 
 // 3. use
 Vue.use(VueRouter)
@@ -21,7 +22,17 @@ let router = new VueRouter({
     {
       name: 'Index',
       path: '/index',
-      component: Index
+      component: Index,
+      // 添加重定向，让其默认展示欢迎界面
+      redirect: { name: 'Wel' },
+      // 添加嵌套路由
+      children: [
+        {
+          name: 'Wel',
+          path: 'wel',
+          component: Wel
+        }
+      ]
     }
   ]
 })
