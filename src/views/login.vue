@@ -15,7 +15,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="login-btn">登陆</el-button>
+          <el-button type="primary" class="login-btn" @click='loginsubmit'>登陆</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { login } from '@/api/users.js'
 export default {
   data () {
     return {
@@ -44,6 +45,29 @@ export default {
           }
         ]
       }
+    }
+  },
+  methods: {
+    loginsubmit () {
+      // 调用表单的validate函数实现数据的验证，使用的规则就是rules规则
+      this.$refs.loginForm.validate(async (valid) => {
+        if (valid) {
+          // 验证通过，则发起登陆请求
+          let res = await login(this.loginForm)
+          console.log(res)
+          if (res.data.message === '登录成功') {
+            // 跳转到后台管理首页
+          } else {
+            this.$message.error(res.data.message)
+          }
+        } else {
+          // 验证不通过
+          // 给提示
+          this.$message.error('用户数据输入不合法')
+          // 中止本次请求
+          return false
+        }
+      })
     }
   }
 }
