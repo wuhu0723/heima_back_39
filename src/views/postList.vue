@@ -12,8 +12,16 @@
       <el-table-column type="index" width="50"></el-table-column>
         <!-- prop:指定当前列所展示的数据属性 -->
       <el-table-column prop="title" label="标题" width="480"></el-table-column>
-      <el-table-column prop="create_date" label="日期" width="280"></el-table-column>
-      <el-table-column prop="type" label="类型"></el-table-column>
+      <el-table-column label="日期" width="280">
+        <template  slot-scope="scope">
+          {{scope.row.create_date | dateFormat}}
+        </template>
+      </el-table-column>
+      <el-table-column label="类型">
+        <template  slot-scope="scope">
+          {{scope.row.type | typeFormat}}
+        </template>
+      </el-table-column>
       <el-table-column prop="user.nickname" label="作者" width="150"></el-table-column>
       <el-table-column label="操作" width="250">
         <template slot-scope="scope">
@@ -51,6 +59,20 @@ export default {
       pageIndex: 1,
       pageSize: 2,
       total: 0
+    }
+  },
+  // 定义局部过滤器
+  filters: {
+    typeFormat (type) {
+      return type === 1 ? '文章' : '视频'
+    },
+    dateFormat (data, spe) {
+      data = new Date(data)
+      spe = spe || '/'
+      var year = data.getFullYear()
+      var month = data.getMonth() + 1
+      var day = data.getDate()
+      return year + spe + month + spe + day
     }
   },
   methods: {
