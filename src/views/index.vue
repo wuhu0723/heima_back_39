@@ -31,7 +31,7 @@
                 <i class="el-icon-location"></i>
                 <span>文章列表</span>
             </el-menu-item>
-            <el-menu-item index="/addpost">
+            <el-menu-item index="addPost">
                 <i class="el-icon-location"></i>
                 <span>文章发布</span>
             </el-menu-item>
