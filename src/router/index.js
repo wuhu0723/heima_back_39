@@ -7,6 +7,7 @@ import VueRouter from 'vue-router'
 import Login from '@/views/login.vue'
 import Index from '@/views/index.vue'
 import Wel from '@/views/welcomePage.vue'
+import PostList from '@/views/postList.vue'
 
 // 3. use
 Vue.use(VueRouter)
@@ -14,6 +15,11 @@ Vue.use(VueRouter)
 let router = new VueRouter({
   // 5.进行路由配置
   routes: [
+    {
+      name: 'default',
+      path: '/',
+      redirect: { name: 'Index' }
+    },
     {
       name: 'Login',
       path: '/login',
@@ -31,6 +37,11 @@ let router = new VueRouter({
           name: 'Wel',
           path: 'wel',
           component: Wel
+        },
+        {
+          name: 'PostList',
+          path: 'postList',
+          component: PostList
         }
       ]
     }

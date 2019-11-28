@@ -8,6 +8,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='less' scoped>
+// 0 0 1 0
+  .wel{
+    color:#000!important;
+  }
 </style>
