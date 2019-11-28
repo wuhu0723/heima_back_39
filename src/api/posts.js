@@ -7,3 +7,17 @@ export const getPostList = (params) => {
     params
   })
 }
+
+export const getCateList = () => {
+  return axios({
+    url: '/category'
+  })
+}
+
+export const addPost = (data) => {
+  return axios({
+    method: 'post',
+    url: `/post`,
+    data
+  })
+}
