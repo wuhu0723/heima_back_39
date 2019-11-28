@@ -12,6 +12,7 @@
             type="password"
             placeholder="请输入密码"
             prefix-icon="icon-key"
+            @keydown.enter.native='loginsubmit'
           ></el-input>
         </el-form-item>
         <el-form-item>
